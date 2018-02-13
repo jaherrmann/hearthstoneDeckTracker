@@ -14,10 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 /**
- * Provides access the database
- * Created on 8/31/16.
  *
- * @author pwaite
+ * @author jherrmann
  */
 
 public class Database {
@@ -91,32 +89,30 @@ public class Database {
      * @param sqlFile the sql file to be read and executed line by line
      */
     public void runSQL(String sqlFile) {
+            Statement stmt = null;
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream = classloader.getResourceAsStream(sqlFile);
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 
-        Statement stmt = null;
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream inputStream = classloader.getResourceAsStream(sqlFile);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                Class.forName("com.mysql.jdbc.Driver");
+                connect();
+                stmt = connection.createStatement();
 
-            Class.forName("com.mysql.jdbc.Driver");
-            connect();
-            stmt = connection.createStatement();
+                while (true) {
+                    String sql = br.readLine();
+                    if (sql == null) {
+                        break;
+                    }
+                    stmt.executeUpdate(sql);
 
-            while (true) {
-                String sql = br.readLine();
-                if (sql == null) {
-                    break;
                 }
-                stmt.executeUpdate(sql);
 
+            } catch (SQLException se) {
+                logger.error(se);
+            } catch (Exception e) {
+                logger.error(e);
+            } finally {
+                disconnect();
             }
-
-        } catch (SQLException se) {
-            logger.error(se);
-        } catch (Exception e) {
-            logger.error(e);
-        } finally {
-            disconnect();
-        }
-
     }
 }

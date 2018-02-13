@@ -45,9 +45,12 @@ class DeckDaoTest {
         assertEquals("Rare", insertedCard.getRarity());
     }
 
+    /**
+     * Verify that a certain card is deleted from the deck
+     */
     @Test
     void deleteSuccess(){
-        dao.delete(dao.getById(10));
-        assertNull(dao.getById(10));
+        dao.delete(dao.getById(4));
+        assertNull(dao.getById(4));
     }
 }
