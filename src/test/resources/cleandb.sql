@@ -4,4 +4,5 @@ insert into deck (name, rarity, mana_cost, card_set) VALUES('Lyra the Sunshard',
 
 
 
-select * from deck;
+
+select * from ;
