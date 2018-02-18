@@ -18,7 +18,7 @@
 
 
         <mapping class="entity.Deck"/>
-        <mapping class="entity.Stats"/>
+
 
     </session-factory>
 

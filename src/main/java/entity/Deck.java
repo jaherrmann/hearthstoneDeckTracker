@@ -3,6 +3,8 @@ package entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A class that will represent a users deck
@@ -27,6 +29,9 @@ public class Deck {
 
     @Column(name = "card_set")
     private String card_set;
+
+//    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    private Set<Stats> stats = new HashSet<>();
 
     /**
      * No argument constructor
@@ -88,4 +93,12 @@ public class Deck {
     public void setSet(String set) {
         this.card_set = set;
     }
+
+//    public Set<Stats> getStats() {
+//        return stats;
+//    }
+//
+//    public void setStats(Set<Stats> stats) {
+//        this.stats = stats;
+//    }
 }
