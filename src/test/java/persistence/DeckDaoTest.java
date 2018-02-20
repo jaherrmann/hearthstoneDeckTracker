@@ -1,6 +1,7 @@
 package persistence;
 
 import entity.Deck;
+import entity.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import test.util.Database;
@@ -14,7 +15,6 @@ class DeckDaoTest {
     /**
      * 1) execute sql which deletes everything from table and inserts records
      */
-
 
     @BeforeEach
     void setUp(){
@@ -43,6 +43,30 @@ class DeckDaoTest {
         assertNotEquals(0,id);
         Deck insertedCard = dao.getById(id);
         assertEquals("Rare", insertedCard.getRarity());
+    }
+
+
+    /**
+     *  Verify that the stats were inserted properly
+     */
+    @Test
+    void insertWithStatsSuccess(){
+
+        Deck newCard = new Deck("Auchenai Soulpriest", "Rare", 4, "Basic");
+
+        String statDescription = "Stat1";
+
+        Stats stat = new Stats(statDescription, newCard);
+
+        newCard.addStat(stat);
+
+        int id = dao.insert(newCard);
+
+
+        assertNotEquals(0,id);
+        Deck insertedCard = dao.getById(id);
+        assertEquals("Rare", insertedCard.getRarity());
+        //assertEquals(1, insertedCard.);
     }
 
     /**

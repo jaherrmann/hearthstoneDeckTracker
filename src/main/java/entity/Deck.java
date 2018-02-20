@@ -30,8 +30,8 @@ public class Deck {
     @Column(name = "card_set")
     private String card_set;
 
-//    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//    private Set<Stats> stats = new HashSet<>();
+    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Stats> stats = new HashSet<>();
 
     /**
      * No argument constructor
@@ -92,6 +92,16 @@ public class Deck {
 
     public void setSet(String set) {
         this.card_set = set;
+    }
+
+    public void addStat(Stats stat) {
+        stats.add(stat);
+        stat.setDeck(this);
+    }
+
+    public void removeStat(Stats stat){
+        stats.remove(stat);
+        stat.setDeck(null);
     }
 
 //    public Set<Stats> getStats() {

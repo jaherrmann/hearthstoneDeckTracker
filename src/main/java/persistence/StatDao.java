@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class StatsDao {
+public class StatDao {
     //private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
@@ -41,6 +41,14 @@ public class StatsDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(stats);
+        transaction.commit();
+        session.close();
+    }
+
+    public void saveOrUpdate(Stats stats) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(stats);
         transaction.commit();
         session.close();
     }
