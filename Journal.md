@@ -25,3 +25,16 @@ Tasks completed:
 
 I'm beginning how this is all going to come together, with the stream of work spread over all classes, my internship, and regualar weekend work. So far I've been able to keep my head above water with the weekly assignments, but only just. The exercises are challenging, but not tedious, so that's a positive. I implemented hibernate into my project and after troubleshooting why the DB was coming up null I found that the properties file was pointing at the wrong database--oops. Thankfully the debugger really helped me track down exactly where the query was failing and made it much, much easier to fix. I still hope to get the scaffolding on my .jsps done before the end of the week.
 
+### Week 5
+
+Tasks completed:
+* Finished week 5 assignments
+* Implemented one to many hibernate into my project
+
+I implemented this week's hibernate activity into my project and modified my database to reflect that new technology. I also put some serious thought into how I how I want my database to perform and the columns fields and areas that I want it to reflect. 
+
+
+
+
+
+

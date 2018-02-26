@@ -23,6 +23,11 @@ My website solves that problem. It gives players a repository to store their car
 	*Bootstrap
 * API
 	* Will use a fancy hearthstone API that should give me some really cool card graphics. 
+***
+[Project Plan](ProjectPlan.md)
 
-*** [Project Plan](ProjectPlan.md)
-*** [Development Journal](Journal.md)
+*** 
+[Development Journal](Journal.md)
+
+*** 
+[Database Design](DatabaseDesign.md)
