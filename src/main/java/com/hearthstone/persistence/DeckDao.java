@@ -1,54 +1,46 @@
-package persistence;
+package com.hearthstone.persistence;
 
-import entity.Stats;
+import com.hearthstone.entity.Deck;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class StatDao {
+public class DeckDao {
     //private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
      * Get card by id
      */
-    public Stats getById(int id){
+    public Deck getById(int id){
         Session session = sessionFactory.openSession();
-        Stats stats = session.get(Stats.class, id);
+        Deck deck = session.get(Deck.class, id);
         session.close();
-        return stats;
+        return deck;
     }
 
     /**
-     * update stats
-     * @param stats Stats to be inserted or updated
+     * update deck
+     * @param deck Deck to be inserted or updated
      */
-    public int insert(Stats stats){
+    public int insert(Deck deck){
         int id = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        id = (int)session.save(stats);
+        id = (int)session.save(deck);
         transaction.commit();
         session.close();
         return id;
     }
 
     /**
-     * Delete from the stats
-     * @param stats the card to be deleted
+     * Delete from the deck
+     * @param deck the card to be deleted
      */
-    public void delete(Stats stats){
+    public void delete(Deck deck){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(stats);
-        transaction.commit();
-        session.close();
-    }
-
-    public void saveOrUpdate(Stats stats) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.saveOrUpdate(stats);
+        session.delete(deck);
         transaction.commit();
         session.close();
     }

@@ -1,47 +1,54 @@
-package persistence;
+package com.hearthstone.persistence;
 
-import entity.Deck;
+import com.hearthstone.entity.Stats;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import javax.persistence.criteria.*;
 
-public class DeckDao {
+public class StatDao {
     //private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
      * Get card by id
      */
-    public Deck getById(int id){
+    public Stats getById(int id){
         Session session = sessionFactory.openSession();
-        Deck deck = session.get(Deck.class, id);
+        Stats stats = session.get(Stats.class, id);
         session.close();
-        return deck;
+        return stats;
     }
 
     /**
-     * update deck
-     * @param deck Deck to be inserted or updated
+     * update stats
+     * @param stats Stats to be inserted or updated
      */
-    public int insert(Deck deck){
+    public int insert(Stats stats){
         int id = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        id = (int)session.save(deck);
+        id = (int)session.save(stats);
         transaction.commit();
         session.close();
         return id;
     }
 
     /**
-     * Delete from the deck
-     * @param deck the card to be deleted
+     * Delete from the stats
+     * @param stats the card to be deleted
      */
-    public void delete(Deck deck){
+    public void delete(Stats stats){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(deck);
+        session.delete(stats);
+        transaction.commit();
+        session.close();
+    }
+
+    public void saveOrUpdate(Stats stats) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(stats);
         transaction.commit();
         session.close();
     }
