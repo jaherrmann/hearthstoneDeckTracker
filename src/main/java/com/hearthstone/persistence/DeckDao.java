@@ -5,6 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
+
 public class DeckDao {
     //private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
@@ -17,6 +22,16 @@ public class DeckDao {
         Deck deck = session.get(Deck.class, id);
         session.close();
         return deck;
+    }
+
+    public List<Deck> getAllCards(){
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Deck> query = builder.createQuery(Deck.class);
+        Root<Deck> root = query.from(Deck.class);
+        List<Deck> cards = session.createQuery(query).getResultList();
+        session.close();
+        return cards;
     }
 
     /**
