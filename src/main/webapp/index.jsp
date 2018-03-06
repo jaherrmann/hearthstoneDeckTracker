@@ -13,11 +13,8 @@
     <a href="profile.jsp">Profile</a>
 
 
-<h2>User Display Exercise - Week 1</h2>
-<!--<a href = "searchUser">Search</a>-->
+<h2>Search All Hearthstone Decks</h2>
 <form action="searchDeck" class="form-inline">
-    <input tpye="text" name="searchTerm" value=""><br />
-    <input type="radio" name="searchType" value="last_name">Last Name <br />
     <input type="submit" name="submit" value="submit">
 </form>
 

@@ -25,7 +25,7 @@ public class SearchDeck extends HttpServlet {
 
         DeckDao deckDao = new DeckDao();
 
-        req.setAttribute("name", deckDao.getAllCards());
+        req.setAttribute("cards", deckDao.getAllCards());
         RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");
         dispatcher.forward(req, resp);
     }

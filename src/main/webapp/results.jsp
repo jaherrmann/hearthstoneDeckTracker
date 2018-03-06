@@ -26,8 +26,7 @@
                 <td>${card.name}</td>
                 <td>${card.rarity}</td>
                 <td>${card.mana_cost}</td>
-                <td>${card.card_set}</td>
-
+                <td>${card.set}</td>
             </tr>
         </c:forEach>
 
