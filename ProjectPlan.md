@@ -2,29 +2,29 @@
 
 ### Week 4
 
-- [ ] Weekly journal entry
-- [ ] Write project Plan
-- [ ] Create Mockups of Screen
-- [ ] Create time log
-- [ ] Ensure all are pushed to github
+- [x ] Weekly journal entry
+- [x ] Write project Plan
+- [x ] Create Mockups of Screen
+- [ x] Create time log
+- [ x] Ensure all are pushed to github
 
 
 ### Week 5
 
-- [ ] Weekly journal entry
-- [ ] Create database and user table
-- [ ] Set up the html pages and ensure redirection and links working
-- [ ] Begin looking into API for cards
+- [x ] Weekly journal entry
+- [x ] Create database and user table
+- [x ] Set up the html pages and ensure redirection and links working
+- [ x] Begin looking into API for cards
 
 ### Week 6
-- [ ] Weekly journal entry
+- [x ] Weekly journal entry
 - [ ] Add the ability to create a profile
 - [ ] Create ability for different profiles to have different decks (how the hell will I do this?)
-- [ ] Create a login page
+- [x ] Create a login page
 - [ ] Search Functionality
 
 ### Week 7
-- [ ] Weekly journal entry
+- [x ] Weekly journal entry
 - [ ] Fully implement an API
 - [ ] Create ability to edit decks
 - [ ] Record wins and losses
@@ -33,7 +33,7 @@
 - [ ] Add sorting based on total wins
 
 ### Week 8
-- [ ] Weekly journal entry
+- [x ] Weekly journal entry
 - [ ] Add tables to home page showing user's top-liked decks
 - [ ] Work on getting delete working if this isn't done by now
 - [ ] Add in a percentage calculator using wins and losses

@@ -43,5 +43,19 @@ Tasks completed:
 
 I spent much of my time this week reviewing my peers' code. I also set up my AWS instance and have the ability to ssh into it. Next steps will include thinking about how the controllers for my classes are going to work and implementing servlets for those classes.
 
+### Week 7 
+
+
+Tasks Completed:
+* AWS is now up and running. The database is giving results and all is well with the world, for now. I can't remember exactly what the problem was that was keeping me from finishing this task, but it had something to do with a connection to localhost:8080. 
+* I worked on getting authentication running. 
+* Cleaned up some noise code.
+
+This week was rewarding in that I got my AWS up and running, despite having many setbacks. I'm glad that I chose to consistently upload my project through each of these weekly problems--it's really helping me out now because there seems to be less and less time each week for completed java related tasks. 
+
+
+
+
+
 
 
