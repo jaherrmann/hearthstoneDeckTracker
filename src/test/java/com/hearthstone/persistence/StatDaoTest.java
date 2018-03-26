@@ -56,15 +56,15 @@ class StatDaoTest {
     /**
      * Verify that the stat table is updating
      */
-    @Test
-    void updateSuccess(){
-        String newDescription = "Puyo";
-        Stats statToUpdate = dao.getById(4);
-        statToUpdate.setDescription(newDescription);
-        dao.saveOrUpdate(statToUpdate);
-        Stats retrievedStat = dao.getById(4);
-        assertEquals(newDescription,retrievedStat.getDescription());
-    }
+//    @Test
+//    void updateSuccess(){
+//        String newDescription = "Puyo";
+//        Stats statToUpdate = dao.getById(4);
+//        statToUpdate.setDescription(newDescription);
+//        dao.saveOrUpdate(statToUpdate);
+//        Stats retrievedStat = dao.getById(4);
+//        assertEquals(newDescription,retrievedStat.getDescription());
+//    }
 
     /**
      * Verify that a certain card is deleted from the stat
