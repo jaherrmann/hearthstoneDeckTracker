@@ -19,7 +19,7 @@ public class GetAllCards {
 
     @GET
     //Define what is produced
-    @Produces("text/plain")
+    @Produces("application/json")
     public Response getMessage() {
         DeckDao dao = new DeckDao();
         //return the cards from the dao
