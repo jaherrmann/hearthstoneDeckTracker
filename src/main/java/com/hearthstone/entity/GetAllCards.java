@@ -22,10 +22,7 @@ public class GetAllCards {
     @Produces("application/json")
     public Response getMessage() {
         DeckDao dao = new DeckDao();
-        //return the cards from the dao
-
         List<Deck> outputStatement = dao.getAllCards();
-        List<String> output = new ArrayList<>();
         Gson gson = new Gson();
         List<String> outputList = new ArrayList<>();
 
@@ -33,6 +30,7 @@ public class GetAllCards {
             String myName = outputStatement.get(i).getName();
             outputList.add(myName);
         }
+
         String jsonArray = gson.toJson(outputList);
 
         return Response.status(200).entity(jsonArray).build();
