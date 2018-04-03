@@ -1,12 +1,13 @@
 package com.hearthstone.persistence;
 
+import com.hearthstone.entity.Deck;
 import com.hearthstone.entity.Decklist;
-import org.junit.Test;
+
 import org.junit.jupiter.api.BeforeEach;
-import test.util.Database;
+import org.junit.jupiter.api.Test;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -14,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class DecklistDaoTest {
 
-    DecklistDao dao;
+    DecklistDao dao = new DecklistDao();
 
-    @BeforeEach
-    void setUp(){
-        test.util.Database database = test.util.Database.getInstance();
-        database.runSQL("cleandb.sql");
-        dao = new DecklistDao();
-    }
+//    @BeforeEach
+//    void setUp(){
+//        test.util.Database database = test.util.Database.getInstance();
+//        database.runSQL("cleandb.sql");
+//        dao = new DecklistDao();
+//    }
 
     /**
      * Verify that the 5th card is Glacial Shard
