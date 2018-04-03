@@ -28,14 +28,24 @@
             <artifactId>junit-platform-surefire-provider</artifactId>
             <version>1.0.0</version>
           </dependency>
-
-
         </dependencies>
       </plugin>
     </plugins>
   </build>
 
   <dependencies>
+    <!-- ACTION JACKSON -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-jaxrs</artifactId>
+      <version>1.9.0</version>
+    </dependency>
+    <!-- GSON -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.0</version>
+    </dependency>
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -63,6 +73,12 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Jersey Dependency -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>2.23.2</version>
+    </dependency>
 
     <dependency>
       <groupId>javax</groupId>

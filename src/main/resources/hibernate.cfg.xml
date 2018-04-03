@@ -2,6 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--suppress HibernateConfigDomFacetInspection -->
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/hearthstone</property>
@@ -17,8 +18,9 @@
         <property name="hibernate.c3p0.idle_test_period">3000</property>
 
 
-        <mapping class="entity.Deck"/>
-        <mapping class="entity.Stats"/>
+        <mapping class="com.hearthstone.entity.Deck"/>
+        <mapping class="com.hearthstone.entity.Stats"/>
+        <mapping class="com.hearthstone.entity.Decklist"/>
 
     </session-factory>
 

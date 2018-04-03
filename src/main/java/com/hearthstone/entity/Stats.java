@@ -1,5 +1,6 @@
-package entity;
+package com.hearthstone.entity;
 
+import com.hearthstone.entity.Deck;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

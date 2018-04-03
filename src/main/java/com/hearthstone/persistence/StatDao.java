@@ -1,6 +1,6 @@
-package persistence;
+package com.hearthstone.persistence;
 
-import entity.Stats;
+import com.hearthstone.entity.Stats;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -1,4 +1,4 @@
-package entity;
+package com.hearthstone.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
