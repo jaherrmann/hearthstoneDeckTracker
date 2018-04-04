@@ -26,33 +26,33 @@ class StatDaoTest {
     /**
      * Verify that the second record is northsire cleric
      */
-//    @Test
-//    void getByIdSuccess() {
-//        Stats retrievedCard = dao.getById(2);
-//        assertEquals("Big", retrievedCard.getDescription());
-//    }
+    @Test
+    void getByIdSuccess() {
+        Stats retrievedCard = dao.getById(2);
+        assertEquals("Big", retrievedCard.getDescription());
+    }
 
     /**
      * Verify that a new card was added properly
      */
-    @Test
-    void insertSuccess(){
-
-        DeckDao deckDao = new DeckDao();
-        Deck deck = deckDao.getById(1);
-
-
-        Stats newStat = new Stats("Control", deck);
-        deck.addStat(newStat);
-
-        int id = dao.insert(newStat);
-
-        assertNotEquals(0,id);
-        Stats insertedStat = dao.getById(id);
-        assertEquals("Control", insertedStat.getDescription());
-        assertNotNull(insertedStat.getDeck().getName());
-        assertEquals(5, insertedStat.getDeck().getMana_cost());
-    }
+//    @Test
+//    void insertSuccess(){
+//
+//        DeckDao deckDao = new DeckDao();
+//        Deck deck = deckDao.getById(1);
+//
+//
+//        Stats newStat = new Stats("Control", deck);
+//        deck.addStat(newStat);
+//
+//        int id = dao.insert(newStat);
+//
+//        assertNotEquals(0,id);
+//        Stats insertedStat = dao.getById(id);
+//        assertEquals("Control", insertedStat.getDescription());
+//        assertNotNull(insertedStat.getDeck().getName());
+//        assertEquals(5, insertedStat.getDeck().getMana_cost());
+//    }
     /**
      * Verify that the stat table is updating
      */

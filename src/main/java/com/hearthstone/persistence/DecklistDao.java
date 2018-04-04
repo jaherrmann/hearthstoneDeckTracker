@@ -4,6 +4,7 @@ package com.hearthstone.persistence;
 import com.hearthstone.entity.Decklist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  * Class designed to insert into decklist
@@ -21,4 +22,13 @@ public class DecklistDao {
         return decklist;
     }
 
+    /**
+     * Get deck name from Id
+     */
+    public Decklist getNameFromId(int id){
+        Session session = sessionFactory.openSession();
+        Decklist decklist = session.get(Decklist.class, id);
+        session.close();
+        return decklist;
+    }
 }
