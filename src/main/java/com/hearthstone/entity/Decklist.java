@@ -17,8 +17,12 @@ public class Decklist {
     @GenericGenerator(name="native", strategy = "native")
     private int id;
 
-//    @OneToMany
-//    private int userId;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
+
+//    @OneToOne(targetEntity = Stats.class)
+//    @JoinColumn(name = "deck_id")
+//    private Stats stats;
 
     @Column(name = "name")
     private String name;
@@ -113,6 +117,23 @@ public class Decklist {
     @Column(name = "card30")
     private String card30;
 
+
+//    public int getUser_id() {
+//        return user_id;
+//    }
+//
+//    public void setUser_id(int user_id) {
+//        this.user_id = user_id;
+//    }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
     public int getId() {
         return id;
     }
@@ -120,14 +141,6 @@ public class Decklist {
     public void setId(int id) {
         this.id = id;
     }
-
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
 
 
     public String getName() {
@@ -386,13 +399,13 @@ public class Decklist {
     /**
      * Instantiates a deck
      */
-    public Decklist(int id, String name, String card1, String card2, String card3, String card4, String card5,
+    public Decklist(int id, /*, String name , */ String card1, String card2, String card3, String card4, String card5,
                     String card6, String card7, String card8, String card9, String card10, String card11,String card12,
                     String card13, String card14, String card15, String card16, String card17, String card18, String card19,
                     String card20, String card21, String card22, String card23, String card24, String card25, String card26,
                     String card27, String card28, String card29, String card30){
         this.id = id;
-        //this.userId = userId;ADD THE USER ID
+//        this.user = user;
         this.name = name;
         this.card1 = card1;
         this.card2 = card2;

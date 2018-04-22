@@ -4,21 +4,22 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class GenericDAO<T> {
+public class GenericDao<T> {
     private Class<T> type;
     Logger logger =  Logger.getLogger(this.getClass());
 
-    public GenericDAO() {
+    public GenericDao() {
 
     }
 
-    public GenericDAO(Class<T> type) {
+    public GenericDao(Class<T> type) {
         this.type = type;
     }
 

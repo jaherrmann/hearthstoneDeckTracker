@@ -1,6 +1,6 @@
 package com.hearthstone.persistence;
 
-
+import com.hearthstone.entity.User;
 import com.hearthstone.entity.Decklist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,9 +15,9 @@ public class DecklistDao {
     /**
      * Get card by card number
      */
-    public Decklist getCardByNumber(String cardNumber){
+    public Decklist getCardByNumber(String cardName){
         Session session = sessionFactory.openSession();
-        Decklist decklist = session.get(Decklist.class, cardNumber);
+        Decklist decklist = session.get(Decklist.class, cardName);
         session.close();
         return decklist;
     }

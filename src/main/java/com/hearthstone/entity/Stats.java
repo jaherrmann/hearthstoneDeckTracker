@@ -1,9 +1,12 @@
 package com.hearthstone.entity;
 
-import com.hearthstone.entity.Deck;
+//import com.hearthstone.entity.Deck;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "Stats")
 @Table(name = "stats")
@@ -14,19 +17,53 @@ public class Stats {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
+    @Column(name = "wins")
+    private String wins;
 
-    private String description;
+    @Column(name = "losses")
+    private String losses;
 
-    @ManyToOne
-    private Deck deck;
+    @Column(name = "win_percentage")
+    private int winPercentage;
 
+//    @OneToMany(mappedBy = "deck_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    @JsonIgnore
+//    private Set<Decklist> decklist = new HashSet<>();
 
     public Stats(){
     }
 
-    public Stats(String description, Deck deck) {
-        this.deck = deck;
-        this.description = description;
+
+//    public Set<Decklist> getDecklist() {
+//        return decklist;
+//    }
+//
+//    public void setDecklist(Set<Decklist> decklist){
+//        this.decklist = decklist;
+//    }
+
+    public String getWins() {
+        return wins;
+    }
+
+    public void setWins(String wins) {
+        this.wins = wins;
+    }
+
+    public String getLosses() {
+        return losses;
+    }
+
+    public void setLosses(String losses) {
+        this.losses = losses;
+    }
+
+    public int getWinPercentage() {
+        return winPercentage;
+    }
+
+    public void setWinPercentage(int winPercentage) {
+        this.winPercentage = winPercentage;
     }
 
     public int getId() {
@@ -37,28 +74,12 @@ public class Stats {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
 
     @Override
     public String toString() {
         return "Stats{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
-                ", deck=" + deck +
+//                ", decklist=" + decklist +
                 '}';
     }
 }

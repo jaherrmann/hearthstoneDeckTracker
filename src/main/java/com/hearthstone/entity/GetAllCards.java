@@ -1,7 +1,7 @@
 package com.hearthstone.entity;
 
 import com.google.gson.Gson;
-import com.hearthstone.persistence.DeckDao;
+import com.hearthstone.persistence.DecklistDao;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.ws.rs.GET;
@@ -21,15 +21,15 @@ public class GetAllCards {
     //Define what is produced
     @Produces("application/json")
     public Response getMessage() {
-        DeckDao dao = new DeckDao();
-        List<Deck> outputStatement = dao.getAllCards();
+        DecklistDao dao = new DecklistDao();
+        //List<Decklist> outputStatement = dao.getAllCards();
         Gson gson = new Gson();
         List<String> outputList = new ArrayList<>();
 
-        for(int i = 0; i < outputStatement.size(); i++){
-            String myName = outputStatement.get(i).getName();
-            outputList.add(myName);
-        }
+//        for(int i = 0; i < outputStatement.size(); i++){
+//            String myName = outputStatement.get(i).getName();
+//            outputList.add(myName);
+//        }
 
         String jsonArray = gson.toJson(outputList);
 
