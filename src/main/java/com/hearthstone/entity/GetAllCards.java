@@ -35,4 +35,5 @@ public class GetAllCards {
 
         return Response.status(200).entity(jsonArray).build();
     }
+
 }

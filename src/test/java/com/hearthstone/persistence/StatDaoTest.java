@@ -26,11 +26,11 @@ class StatDaoTest {
     /**
      * Verify that the second record is northsire cleric
      */
-    @Test
-    void getByIdSuccess() {
-        Stats retrievedCard = dao.getById(2);
-        assertEquals("Big", retrievedCard.getDescription());
-    }
+//    @Test
+//    void getByIdSuccess() {
+//        Stats retrievedCard = dao.getById(2);
+//        assertEquals("Big", retrievedCard.getDescription());
+//    }
 
     /**
      * Verify that a new card was added properly

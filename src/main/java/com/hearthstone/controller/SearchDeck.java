@@ -19,9 +19,7 @@ public class SearchDeck extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
 
-
         String searchTerm = req.getParameter("searchTerm");
-
 
         DeckDao deckDao = new DeckDao();
 
