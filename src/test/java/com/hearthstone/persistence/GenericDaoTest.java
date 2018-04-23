@@ -3,9 +3,10 @@ package com.hearthstone.persistence;
 import com.hearthstone.entity.Decklist;
 import com.hearthstone.entity.Stats;
 import com.hearthstone.entity.User;
+
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sun.net.www.content.text.Generic;
 
 import java.util.List;
 
@@ -13,13 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GenericDaoTest {
     GenericDao genericDao;
-    DecklistDao decklistDao;
+    private Logger logger = Logger.getLogger(this.getClass());
 
     @BeforeEach
     void setUp(){
         test.util.Database database = test.util.Database.getInstance();
         database.runSQL("cleandb.sql");
-        //decklistDao = new DecklistDao();
     }
 
 
@@ -29,7 +29,7 @@ class GenericDaoTest {
         Stats stats = new Stats(5, 2, 45, 1);
 
         GenericDao userDao = new GenericDao(User.class);
-        User user = new User(2, "Fred", "Flintstone");
+        User user = new User("Fred", "Flintstone");
 
         userDao.add(user);
         GenericDao deckDao = new GenericDao(Decklist.class);
@@ -82,25 +82,60 @@ class GenericDaoTest {
         genericDao.delete(stats);
         assertNull(genericDao.getByID(1));
     }
-//
-//    @Test
-//    void getAll() {
-//    }
 
-//    @Test
-//    void update() {
-//    }
-//
-//    @Test
-//    void getByPropertyEqual() {
-//    }
-//
-//    @Test
-//    void getByPropertyString() {
-//    }
-//
-//    @Test
-//    void getByPropertyLike() {
-//    }
+    @Test
+    void userCanAddMultipleDecks() {
+        GenericDao userDao = new GenericDao(User.class);
+        User user = new User("Fred", "Flintstone");
 
+        userDao.add(user);
+        GenericDao deckDao = new GenericDao(Decklist.class);
+        Decklist decklist = new Decklist("Mind-flayer", user, "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Praying Mantis", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Glacial Shard", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly");
+
+        Decklist decklist1 = new Decklist("Rush", user, "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Sleeper", "Praying Mantis", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Attack", "Fire fly", "Glacial Shard", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Cleric", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly");
+
+        deckDao.add(decklist);
+        deckDao.add(decklist1);
+
+        Decklist retrievedDecklist = (Decklist) deckDao.getByID(3);
+
+        assertEquals(2, retrievedDecklist.getUser().getId());
+    }
+
+    @Test
+    void userCanDeleteDeck(){
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao deckListDao = new GenericDao(Decklist.class);
+        User user = new User("Fred", "Flintstone");
+
+        userDao.add(user);
+        GenericDao deckDao = new GenericDao(Decklist.class);
+        Decklist decklist = new Decklist("Mind-flayer", user, "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Praying Mantis", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Glacial Shard", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly");
+
+        Decklist decklist1 = new Decklist("Rush", user, "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Sleeper", "Praying Mantis", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Attack", "Fire fly", "Glacial Shard", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Cleric", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly");
+
+        deckDao.add(decklist);
+        deckDao.add(decklist1);
+
+        Decklist deck = (Decklist)deckListDao.getByID(3);
+
+        deckDao.delete(deck);
+        assertNull(deckDao.getByID(3));
+    }
 }
