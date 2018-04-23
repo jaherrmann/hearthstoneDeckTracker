@@ -17,9 +17,11 @@ public class Decklist {
     @GenericGenerator(name="native", strategy = "native")
     private int id;
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     private User user;
 
+//    @Column(name = "user_id")
+//    private int user_id;
 //    @OneToOne(targetEntity = Stats.class)
 //    @JoinColumn(name = "deck_id")
 //    private Stats stats;
@@ -126,13 +128,13 @@ public class Decklist {
 //        this.user_id = user_id;
 //    }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -399,13 +401,14 @@ public class Decklist {
     /**
      * Instantiates a deck
      */
-    public Decklist(int id, /*, String name , */ String card1, String card2, String card3, String card4, String card5,
+    public Decklist(String name, User user, String card1, String card2, String card3, String card4, String card5,
                     String card6, String card7, String card8, String card9, String card10, String card11,String card12,
                     String card13, String card14, String card15, String card16, String card17, String card18, String card19,
                     String card20, String card21, String card22, String card23, String card24, String card25, String card26,
                     String card27, String card28, String card29, String card30){
-        this.id = id;
-//        this.user = user;
+//        this.id = id;
+        this.user = user;
+//        this.user_id = user_id;
         this.name = name;
         this.card1 = card1;
         this.card2 = card2;

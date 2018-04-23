@@ -208,19 +208,19 @@
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="60" parent="13" name="user_name">
+    <column id="60" parent="13" name="id">
       <Position>1</Position>
-      <DataType>varchar(50)|0</DataType>
-    </column>
-    <column id="61" parent="13" name="user_password">
-      <Position>2</Position>
-      <DataType>varchar(25)|0</DataType>
-    </column>
-    <column id="62" parent="13" name="id">
-      <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="61" parent="13" name="user_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="62" parent="13" name="user_password">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
     </column>
     <key id="63" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

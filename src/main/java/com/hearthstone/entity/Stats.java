@@ -18,19 +18,30 @@ public class Stats {
     private int id;
 
     @Column(name = "wins")
-    private String wins;
+    private int wins;
 
     @Column(name = "losses")
-    private String losses;
+    private int losses;
 
     @Column(name = "win_percentage")
     private int winPercentage;
+
+    //TODO come back and make this a one to one. One deck has one set of stats
+    @Column(name = "deck_id")
+    private int deck_id;
 
 //    @OneToMany(mappedBy = "deck_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 //    @JsonIgnore
 //    private Set<Decklist> decklist = new HashSet<>();
 
     public Stats(){
+    }
+
+    public Stats(int wins, int losses, int winPercentage, int deck_id){
+        this.wins = wins;
+        this.losses = losses;
+        this.winPercentage = winPercentage;
+        this.deck_id = deck_id;
     }
 
 
@@ -41,20 +52,28 @@ public class Stats {
 //    public void setDecklist(Set<Decklist> decklist){
 //        this.decklist = decklist;
 //    }
+    public int getDeck_id() {
+        return deck_id;
+    }
 
-    public String getWins() {
+    public void setDeck_id(int deck_id) {
+        this.deck_id = deck_id;
+    }
+
+
+    public int getWins() {
         return wins;
     }
 
-    public void setWins(String wins) {
+    public void setWins(int wins) {
         this.wins = wins;
     }
 
-    public String getLosses() {
+    public int getLosses() {
         return losses;
     }
 
-    public void setLosses(String losses) {
+    public void setLosses(int losses) {
         this.losses = losses;
     }
 
