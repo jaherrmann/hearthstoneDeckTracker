@@ -17,7 +17,7 @@ public class Decklist {
     @GenericGenerator(name="native", strategy = "native")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private User user;
 
 //    @Column(name = "user_id")

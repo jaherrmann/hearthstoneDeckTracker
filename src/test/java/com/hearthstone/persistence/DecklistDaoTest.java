@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -28,12 +31,10 @@ class DecklistDaoTest {
         Decklist retrievedDeck = dao.getNameFromId(1);
         assertEquals("ZooLock", retrievedDeck.getName());
     }
-    /**
-     * Verify that the 5th card is Glacial Shard
-     */
+
     @Test
-    void getBy5thCardSuccess(){
-        Decklist retrievedCard = dao.getCardByNumber("card5");
-        assertEquals("Glacial Shard", retrievedCard.getCard5());
+    void getDeckById(){
+        List<Decklist> retrievedDeck = dao.getDeckById(1);
+        assertEquals(1, retrievedDeck.size());
     }
 }

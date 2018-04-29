@@ -14,18 +14,18 @@
   </login-config>
 
   <!-- Protect index.jsp. -->
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>add</web-resource-name>
-      <url-pattern>/add.jsp</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>administrator</role-name>
-    </auth-constraint>
-  </security-constraint>
+  <!--<security-constraint>-->
+    <!--<web-resource-collection>-->
+      <!--<web-resource-name>add</web-resource-name>-->
+      <!--<url-pattern>/add.jsp</url-pattern>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+      <!--<role-name>administrator</role-name>-->
+    <!--</auth-constraint>-->
+  <!--</security-constraint>-->
 
-  <security-role>
-    <role-name>administrator</role-name>
-  </security-role>
+  <!--<security-role>-->
+    <!--<role-name>administrator</role-name>-->
+  <!--</security-role>-->
 
 </web-app>

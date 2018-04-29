@@ -1,6 +1,6 @@
 package com.hearthstone.persistence;
 
-import com.hearthstone.entity.Deck;
+//import com.hearthstone.entity.Deck;
 import com.hearthstone.entity.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

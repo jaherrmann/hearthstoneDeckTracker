@@ -91,6 +91,7 @@ public class GenericDao<T> {
         return entities;
     }
 
+
     public List<T> getByPropertyString(String propertyName, String value) {
         Session session = getSession();
 

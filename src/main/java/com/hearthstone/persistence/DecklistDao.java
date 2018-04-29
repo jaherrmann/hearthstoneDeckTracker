@@ -6,6 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
+
 /**
  * Class designed to insert into decklist
  */
@@ -30,5 +35,19 @@ public class DecklistDao {
         Decklist decklist = session.get(Decklist.class, id);
         session.close();
         return decklist;
+    }
+
+
+    public List<Decklist> getDeckById(int id) {
+        Session session = sessionFactory.openSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Decklist> query = builder.createQuery( Decklist.class );
+        Root<Decklist> root = query.from( Decklist.class );
+        query.select(root).where(builder.equal(root.get("id"), id));
+        List<Decklist> decks = session.createQuery( query ).getResultList();
+
+        session.close();
+        return decks;
     }
 }

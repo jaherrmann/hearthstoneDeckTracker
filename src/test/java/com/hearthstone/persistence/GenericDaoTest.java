@@ -8,18 +8,27 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import java.util.List;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GenericDaoTest {
     GenericDao genericDao;
     private Logger logger = Logger.getLogger(this.getClass());
+    private static Validator validator;
 
     @BeforeEach
     void setUp(){
         test.util.Database database = test.util.Database.getInstance();
         database.runSQL("cleandb.sql");
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
     }
 
 
@@ -56,14 +65,14 @@ class GenericDaoTest {
     void shouldUpdateUserNameInTables(){
         genericDao = new GenericDao(User.class);
 
-        String newName = "Giannis";
+        String newName = "Gi";
 
         User user = (User)genericDao.getByID(1);
         user.setUser_name(newName);
         genericDao.update(user);
 
         User newUser = (User)genericDao.getByID(1);
-        assertEquals("Giannis", newUser.getUser_name());
+        assertEquals("Gi", newUser.getUser_name());
     }
 
     @Test
@@ -110,6 +119,7 @@ class GenericDaoTest {
         assertEquals(2, retrievedDecklist.getUser().getId());
     }
 
+
     @Test
     void userCanDeleteDeck(){
         GenericDao userDao = new GenericDao(User.class);
@@ -137,5 +147,26 @@ class GenericDaoTest {
 
         deckDao.delete(deck);
         assertNull(deckDao.getByID(3));
+    }
+
+//    @Test
+//    void shouldFailWithTooFewCharacters(){
+//        GenericDao userDao = new GenericDao(User.class);
+//        User user = new User("Giannis", "GOAT");
+//
+//        Set<ConstraintViolation<User>> constraintViolations =
+//                validator.validate( user );
+//
+//        assertEquals(1, constraintViolations.size());
+//        assertEquals("size must be between 6 and 13", constraintViolations.iterator().next().getMessage());
+//    }
+
+    @Test
+    void shouldAddNewUser(){
+        GenericDao userDao = new GenericDao(User.class);
+        User user = new User("Giannis", "An");
+        userDao.add(user);
+        User retrievedUser = (User)userDao.getByID(2);
+        assertEquals("An", retrievedUser.getUser_password());
     }
 }

@@ -4,6 +4,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,10 +17,13 @@ import java.util.Set;
  */
 
 public class User {
+
     @Column(name="user_name")
+//    @Size(min = 6, max = 13)
     private String user_name;
 
     @Column(name="user_password")
+//    @Size(min = 6, max = 13)
     private String user_password;
 
     @Id
