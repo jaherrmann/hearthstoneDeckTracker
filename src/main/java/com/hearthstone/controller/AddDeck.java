@@ -61,7 +61,6 @@ public class AddDeck extends HttpServlet{
         String name = request.getParameter("name");
 
 
-
         GenericDao findUser = new GenericDao(User.class);
         User user = (User) findUser.getByID(1);
 
