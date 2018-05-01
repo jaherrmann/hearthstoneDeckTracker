@@ -11,9 +11,9 @@
     <title>Create Profile</title>
 
     <form action="/addUser">
-        <input type="text" value="userName">
-        <input type="text" value="password">
-        <input type="submit" value="submit deck">
+        <input type="text" value="Enter Username" name="userName"><br />
+        <input type="password" value="Enter Password" name="password"><br />
+        <input type="submit" value="Create Profile">
 
     </form>
 </head>

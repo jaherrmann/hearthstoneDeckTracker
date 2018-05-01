@@ -82,6 +82,7 @@ public class ManageDeck extends HttpServlet {
                         .header("Accept", "application/json")
                         .asJson();
                 logger.info(restCall);
+
                 cardJson = new JSONObject(restCall.getBody());
 
                 cardImage = parseRestCall(cardJson);
@@ -97,7 +98,12 @@ public class ManageDeck extends HttpServlet {
     private String parseRestCall(JSONObject cardJson) {
         String foundImg = "";
         JSONArray cardArray = cardJson.getJSONArray("array");
-        JSONObject cards = cardArray.getJSONObject(0);
+        JSONObject cards;
+        if(cardArray.length() > 1) {
+            cards = cardArray.getJSONObject(1);
+        } else {
+            cards = cardArray.getJSONObject(0);
+        }
         foundImg = cards.getString("img");
         return foundImg;
     }

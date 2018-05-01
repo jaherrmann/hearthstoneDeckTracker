@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Successfully Added!</title>
-    <h1>Successfully Added Deck!</h1>
+    <title>Success!</title>
+    <h1>Successfully Attempt</h1>
     <a href="index.jsp">Return home</a>
+    <a href="add.jsp">Add Deck</a>
     <a href="viewDecks">View Your Decks</a>
 </head>
 <body>

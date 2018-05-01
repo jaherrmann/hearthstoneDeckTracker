@@ -3,19 +3,16 @@
 --%>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="startbootstrap-sb-admin/css/sb-admin.css" />
     <title>Hearthstone Deck Tracker</title>
 </head>
 <body>
-    <h2>Hello World! This is my hearthstone project</h2>
-    <a href="add.jsp">Add Deck</a><br />
-    <a href="viewDecks">Manage Decks</a><br />
-    <a href="viewDecks">View Your Decks</a><br />
 
-
-<h2>Search All Hearthstone Decks</h2>
-<form action="searchDeck" class="form-inline">
-    <input type="submit" name="submit" value="submit">
-</form>
+<h2>Welcome to Hearthstone Deck Tracker</h2>
+<a href="login.jsp">Login</a><br />
+<a href="add.jsp">Add Deck</a><br />
+<a href="viewDecks">Manage Decks</a><br />
+<a href="createProfile.jsp">Create Hearthstone Deck Tracker Profile</a>
 
 </body>
 </html>

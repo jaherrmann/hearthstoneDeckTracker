@@ -46,7 +46,7 @@
         <input type="text" name="card28">
         <input type="text" name="card29">
         <input type="text" name="card30">
-        <input type="text" name="name">
+        <input type="text" name="name" value="Name of Deck">
         <input type="submit" value="submit deck">
     </form>
 

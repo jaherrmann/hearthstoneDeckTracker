@@ -28,6 +28,9 @@ public class AddDeck extends HttpServlet{
     Logger logger = Logger.getLogger(this.getClass());
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int userId = (Integer) session.getAttribute("userName");
+        logger.info(userId);
         String card1 = request.getParameter("card1");
         String card2 = request.getParameter("card2");
         String card3 = request.getParameter("card3");
@@ -62,7 +65,7 @@ public class AddDeck extends HttpServlet{
 
 
         GenericDao findUser = new GenericDao(User.class);
-        User user = (User) findUser.getByID(1);
+        User user = (User) findUser.getByID(userId);
 
         GenericDao dao = new GenericDao(Decklist.class);
         Decklist decklist = new Decklist(name, user,  card1, card2, card3, card4, card5, card6, card7, card8, card9,
