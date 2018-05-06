@@ -48,7 +48,7 @@
 </c:forEach>
 
 <br />
-
+<br />
 <c:forEach items="${cards}" var="card">
 
     <tr>
@@ -56,5 +56,6 @@
     </tr>
 </c:forEach>
 
+<a href="index.jsp">Return Home</a>
 </body>
 </html>

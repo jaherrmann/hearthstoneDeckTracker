@@ -53,7 +53,45 @@ Tasks Completed:
 
 This week was rewarding in that I got my AWS up and running, despite having many setbacks. I'm glad that I chose to consistently upload my project through each of these weekly problems--it's really helping me out now because there seems to be less and less time each week for completed java related tasks. 
 
+### Week 8 
+Tasks Completed: 
+* Worked on class assignments
+* Spring break coming so no real thoughts on school right now.
 
+### Week 9 
+Tasks Completed
+* Class assignments
+* Started to overhaul my database as it's in a place that I don't really want to work with.
+
+### Week 10
+* Began work on the team project. 
+* I'm very fortunate because I landed with a team that both understands the concepts we're working on and are also available. 
+* Our project is a movie API. It's really cool.
+
+### Week 11
+* Team project. That is all. 
+
+### Week 12
+* Got up to speed with the multithreading assignment and also went a little beyond and completed the messaging assignment too. 
+* Began using some of the tehniques I saw in the team project and borrowed them into my indie. 
+* Hibernate working on indie project.
+
+### Week 13
+* Prepared my individual presentation. 
+* Wrote some tests for my indie project.
+* Conceptualized the API that I want to consume
+
+### Week 14
+* Big week here. Got hibernate working well with my database redesign and presented my research topic. 
+* I have concerns about the templating. This will be one of the last things that I focus on, feeling that functionality is more important.
+
+### Week 15 
+* My app consumes the API that I want it to. This was no small tasks as the API returns a strange JSon node object.
+* Added user functionality. I still need to add validation to that but the structure is there. 
+* Need to allow a user to delete a deck. 
+* Add deck works.
+
+### Week 16
 
 
 

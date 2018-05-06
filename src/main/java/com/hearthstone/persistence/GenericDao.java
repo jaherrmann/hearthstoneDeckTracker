@@ -101,7 +101,7 @@ public class GenericDao<T> {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery( type );
         Root<T> root = query.from( type );
-        query.select(root).where(builder.equal(root.get(propertyName), value));
+        query.select(root).where(builder.equal(root.get("user_name"), propertyName));
         List<T> entities = session.createQuery( query ).getResultList();
 
         session.close();

@@ -2,16 +2,16 @@ package com.hearthstone.persistence;
 
 import com.hearthstone.entity.Decklist;
 import com.hearthstone.entity.User;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
     GenericDao genericDao;
+    Logger logger =  Logger.getLogger(this.getClass());
 
     @BeforeEach
     void setUp(){
@@ -28,22 +28,30 @@ class UserDaoTest {
 
 
     @Test
-    void shouldReturnListofDecksByUserId(){
+    void shouldReturnListofDecksByUserId() {
         UserDao user = new UserDao();
         User retrievedUser = user.getUserFromId(1);
 
         GenericDao deckDao = new GenericDao(Decklist.class);
         Decklist decklist = new Decklist("Control", retrievedUser, "Fire fly", "Fire fly", "Fire fly", "Fire fly",
-                "Fire fly","Praying Mantis","Fire fly","Fire fly","Fire fly","Fire fly","Fire fly","Fire fly",
-                "Fire fly","Fire fly","Glacial Shard","Fire fly","Fire fly","Fire fly","Fire fly", "Fire fly",
-                "Fire fly","Fire fly","Fire fly","Fire fly","Fire fly","Fire fly","Fire fly","Fire fly",
+                "Fire fly", "Praying Mantis", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Glacial Shard", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
+                "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly", "Fire fly",
                 "Fire fly", "Fire fly");
 
         deckDao.add(decklist);
 
         List<Decklist> decks = user.getDeckByUserId(retrievedUser);
         assertEquals(2, decks.size());
-
     }
 
+    @Test
+    void shouldGetUserByUserNamePassword(){
+        UserDao userDao = new UserDao();
+
+        List<User> retriedUser = userDao.getUserbyUsernamePassword("Action", "Jackson");
+        logger.info(retriedUser);
+
+        assertEquals(1, retriedUser.size());
+    }
 }

@@ -26,13 +26,9 @@ public class Stats {
     @Column(name = "win_percentage")
     private int winPercentage;
 
-    //TODO come back and make this a one to one. One deck has one set of stats
     @Column(name = "deck_id")
     private int deck_id;
 
-//    @OneToMany(mappedBy = "deck_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//    @JsonIgnore
-//    private Set<Decklist> decklist = new HashSet<>();
 
     public Stats(){
     }

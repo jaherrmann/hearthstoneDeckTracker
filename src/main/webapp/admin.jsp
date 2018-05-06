@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login Authentication</title>
+    <title>Admin Authentication</title>
 </head>
 <body>
 <FORM ACTION="j_security_check" METHOD="POST">

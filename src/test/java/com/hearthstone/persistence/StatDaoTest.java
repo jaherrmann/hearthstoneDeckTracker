@@ -1,77 +1,71 @@
 package com.hearthstone.persistence;
 
-//import com.hearthstone.entity.Deck;
+import com.hearthstone.entity.Decklist;
 import com.hearthstone.entity.Stats;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+class StatsDaoTest {
 
-class StatDaoTest {
-
-    StatDao dao;
-
-    /**
-     * 1) execute sql which deletes everything from table and inserts records
-     */
+    StatsDao dao;
+    GenericDao genericDao;
+    Logger logger =  Logger.getLogger(this.getClass());
 
 
     @BeforeEach
     void setUp(){
         test.util.Database database = test.util.Database.getInstance();
         database.runSQL("cleandb.sql");
-        dao = new StatDao();
+        dao = new StatsDao();
     }
 
-    /**
-     * Verify that the second record is northsire cleric
-     */
-//    @Test
-//    void getByIdSuccess() {
-//        Stats retrievedCard = dao.getById(2);
-//        assertEquals("Big", retrievedCard.getDescription());
-//    }
 
-    /**
-     * Verify that a new card was added properly
-     */
-//    @Test
-//    void insertSuccess(){
-//
-//        DeckDao deckDao = new DeckDao();
-//        Deck deck = deckDao.getById(1);
-//
-//
-//        Stats newStat = new Stats("Control", deck);
-//        deck.addStat(newStat);
-//
-//        int id = dao.insert(newStat);
-//
-//        assertNotEquals(0,id);
-//        Stats insertedStat = dao.getById(id);
-//        assertEquals("Control", insertedStat.getDescription());
-//        assertNotNull(insertedStat.getDeck().getName());
-//        assertEquals(5, insertedStat.getDeck().getMana_cost());
-//    }
-    /**
-     * Verify that the stat table is updating
-     */
-//    @Test
-//    void updateSuccess(){
-//        String newDescription = "Puyo";
-//        Stats statToUpdate = dao.getById(4);
-//        statToUpdate.setDescription(newDescription);
-//        dao.saveOrUpdate(statToUpdate);
-//        Stats retrievedStat = dao.getById(4);
-//        assertEquals(newDescription,retrievedStat.getDescription());
-//    }
+    @Test
+    void shouldGetStatsById(){
+        StatsDao stats = new StatsDao();
+        Stats retrievedStats = stats.getStatsFromId(1);
+        assertEquals(retrievedStats.getLosses(), 2);
+    }
 
-    /**
-     * Verify that a certain card is deleted from the stat
-     */
-//    @Test
-//    void deleteSuccess(){
-//        dao.delete(dao.getById(1));
-//        assertNull(dao.getById(1));
-//    }
+    @Test
+    void shouldReturnStatsByDeckId(){
+        StatsDao statsDao = new StatsDao();
+        GenericDao deckDao = new GenericDao(Decklist.class);
+        Decklist decklist = (Decklist) deckDao.getByID(1);
+
+
+        List<Stats> retrievedStats = statsDao.getStatsByDeckId(decklist);
+        logger.info(retrievedStats);
+
+        assertEquals(65, retrievedStats.get(0).getWinPercentage());
+    }
+
+    @Test
+    void shouldAddAWin(){
+        StatsDao statsDao = new StatsDao();
+        GenericDao dao = new GenericDao(Stats.class);
+        Stats stats = (Stats) dao.getByID(1);
+
+        statsDao.addWin(stats);
+
+        Stats retrievedStats = (Stats) dao.getByID(1);
+
+        assertEquals(2, retrievedStats.getWins());
+    }
+
+    @Test
+    void shouldAddALoss(){
+        StatsDao statsDao = new StatsDao();
+        GenericDao dao = new GenericDao(Stats.class);
+        Stats stats = (Stats) dao.getByID(1);
+
+        statsDao.addLoss(stats);
+
+        Stats retrievedStats = (Stats) dao.getByID(1);
+
+        assertEquals(3, retrievedStats.getLosses());
+    }
 }

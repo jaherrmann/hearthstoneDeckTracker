@@ -20,12 +20,6 @@ public class Decklist {
     @ManyToOne(cascade = {CascadeType.ALL})
     private User user;
 
-//    @Column(name = "user_id")
-//    private int user_id;
-//    @OneToOne(targetEntity = Stats.class)
-//    @JoinColumn(name = "deck_id")
-//    private Stats stats;
-
     @Column(name = "name")
     private String name;
 
@@ -118,15 +112,6 @@ public class Decklist {
 
     @Column(name = "card30")
     private String card30;
-
-
-//    public int getUser_id() {
-//        return user_id;
-//    }
-//
-//    public void setUser_id(int user_id) {
-//        this.user_id = user_id;
-//    }
 
     public User getUser() {
         return user;
@@ -406,9 +391,7 @@ public class Decklist {
                     String card13, String card14, String card15, String card16, String card17, String card18, String card19,
                     String card20, String card21, String card22, String card23, String card24, String card25, String card26,
                     String card27, String card28, String card29, String card30){
-//        this.id = id;
         this.user = user;
-//        this.user_id = user_id;
         this.name = name;
         this.card1 = card1;
         this.card2 = card2;

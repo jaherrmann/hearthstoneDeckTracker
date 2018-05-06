@@ -5,7 +5,6 @@ import com.hearthstone.entity.User;
 import com.hearthstone.entity.Decklist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -31,25 +30,11 @@ public class UserDao {
         return user;
     }
 
-//    private List<Movies> getByPropertyEqualGenre( Genre genre) {
-//        Session session = getSession();
-//
-//        logger.debug("Searching for movies with genre" + " = " + genre);
-//
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<Movies> query = builder.createQuery( Movies.class );
-//        Root<Movies> root = query.from( Movies.class );
-//        query.select(root).where(builder.equal(root.get("genre"), genre));
-//        List<Movies> movies = session.createQuery( query ).getResultList();
-//
-//        session.close();
-//        return movies;
-//    }
 
     public List<Decklist> getDeckByUserId(User user) {
         Session session = sessionFactory.openSession();
         int userId = user.getId();
-        logger.debug("Searching for movies with userId" + " = " + user);
+        logger.debug("Searching for user with userId" + " = " + user);
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Decklist> query = builder.createQuery( Decklist.class );
@@ -61,6 +46,19 @@ public class UserDao {
         return decks;
     }
 
+    public List<User> getUserbyUsernamePassword(String username, String password) {
+        Session session = sessionFactory.openSession();
 
+        logger.debug("Searching for user with " + username + " = " + password);
 
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery( User.class );
+        Root<User> root = query.from( User.class );
+
+        query.select(root).where(builder.and(builder.equal(root.get("user_name"), username), builder.equal(root.get("user_password"), password)));
+        List<User> entities = session.createQuery( query ).getResultList();
+
+        session.close();
+        return entities;
+    }
 }

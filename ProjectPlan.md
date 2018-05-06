@@ -18,14 +18,14 @@
 
 ### Week 6
 - [x ] Weekly journal entry
-- [ ] Add the ability to create a profile
-- [ ] Create ability for different profiles to have different decks (how the hell will I do this?)
+- [x ] Add the ability to create a profile
+- [x ] Create ability for different profiles to have different decks (how the hell will I do this?)
 - [x ] Create a login page
-- [ ] Search Functionality
+- [x  ] Search Functionality
 
 ### Week 7
 - [x ] Weekly journal entry
-- [ ] Fully implement an API
+- [ x] Fully implement an API
 - [ ] Create ability to edit decks
 - [ ] Record wins and losses
 - [ ] Add in a percentage calculator using wins and losses
@@ -48,22 +48,22 @@
 - [ ] Start to really polish the way the UI looks and feels
 
 ### Week 10 
-- [ ] Weekly journal entry
-- [ ] Boring week. 
+- [ x] Weekly journal entry
+- [ x] Boring week. 
 
 ### Week 11 - Team project due
-- [ ] Weekly journal entry
+- [ x] Weekly journal entry
 - [ ] Re-evaluate how the project is coming along
 - [ ] Create a list of todo based on the progess of the project
 
 ### Week 12
-- [ ] Weekly journal entry
+- [ x] Weekly journal entry
 - [ ] Complete week 11 todos
 - [ ] Make sure that the project does what I want it to do.
 - [ ] Final touches and glosses to the UI
 
 ### Week 13
-- [ ] Weekly journal entry
+- [x ] Weekly journal entry
 - [ ] Begin making final presentation
 
 ### Week 14
