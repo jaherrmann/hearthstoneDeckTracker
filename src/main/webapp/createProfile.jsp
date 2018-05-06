@@ -11,7 +11,7 @@
     <title>Create Profile</title>
 </head>
 <body>
-    <form action="/addUser">
+    <form action="/IndieProjectHerrmann/addUser">
         <input type="text" value="Enter Username" name="userName"><br />
         <input type="password" value="Enter Password" name="password"><br />
         <input type="submit" value="Create Profile">

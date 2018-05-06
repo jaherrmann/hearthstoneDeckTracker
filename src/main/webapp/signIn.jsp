@@ -11,7 +11,7 @@
     <title>Sign In to View Decks</title>
 </head>
 <body>
-<form action="/signIn">
+<form action="/IndieProjectHerrmann/signIn">
     <input type="text" value="Enter Username" name="userName"><br />
     <input type="password" value="Enter Password" name="password"><br />
     <input type="submit" value="Log In">

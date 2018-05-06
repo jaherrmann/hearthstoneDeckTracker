@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Success!</title>
-    <h1>Successfully Attempt</h1>
-    <a href="index.jsp">Return home</a>
-    <a href="add.jsp">Add Deck</a>
+    <h1>Successful!</h1>
+    <a href="index.jsp">Return home</a><br />
+    <a href="add.jsp">Add Deck</a><br />
     <a href="viewDecks">View Your Decks</a>
 </head>
 <body>

@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -39,6 +40,7 @@ import java.util.List;
 public class ManageDeck extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         DecklistDao dao = new DecklistDao();
         StatsDao statsDao = new StatsDao();
         String jsonAsString = "";
@@ -49,6 +51,9 @@ public class ManageDeck extends HttpServlet {
 
         String searchTerm = request.getParameter("deckId");
         int deckId = Integer.parseInt(searchTerm);
+
+        //this is important
+        session.setAttribute("deckId", deckId);
         logger.info(deckId);
 
         List<Stats> stats = statsDao.getStatsFromDeckId(deckId);

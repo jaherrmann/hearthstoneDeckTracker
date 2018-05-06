@@ -12,6 +12,13 @@
     <title>Decks</title>
 </head>
 <body>
+
+<c:forEach items="${decks}" var="deck">
+    <h2>Deck Name: </h2>
+    <h2>${deck.name}</h2>
+</c:forEach>
+
+
 <table border="1px" width="100px">
 <th>Wins</th>
 <th>Losses</th>
@@ -26,9 +33,11 @@
 </c:forEach>
 </table>
 
-<c:forEach items="${decks}" var="deck">
-    <td>${deck.name}</td>
-</c:forEach>
+<form action ="/IndieProjectHerrmann/calculateStats">
+    <input type="number" value="Enter Wins" name="wins" placeholder="Add Wins"><br />
+    <input type="number" value="Enter Losses" name="losses" placeholder="Add Losses"><br />
+    <input type="submit" value="Record Stats!">
+</form>
 
 <br />
 <br />

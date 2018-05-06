@@ -14,7 +14,7 @@
 <body>
     <h2>Manage Your Decks</h2>
 
-    <form action="manageDeck" method="GET">
+    <form action="/IndieProjectHerrmann/manageDeck" method="GET">
         <h2>Choose A Deck To Manage</h2>
         <select name="deckId">
             <option>Choose</option>

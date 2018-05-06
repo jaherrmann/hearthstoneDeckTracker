@@ -15,7 +15,7 @@
     <a href="index.jsp">Back Home</a><br />
     <a href="find.jsp">Find Deck</a><br />
     <a href="record.jsp">Record</a>
-    <form action="/addDeck">
+    <form action="/IndieProjectHerrmann/addDeck">
         <input type="text" name="card1">
         <input type="text" name="card2">
         <input type="text" name="card3">
