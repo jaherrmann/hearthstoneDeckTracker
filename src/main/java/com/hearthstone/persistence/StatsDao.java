@@ -71,4 +71,38 @@ public class StatsDao {
         session.close();
         return(losses);
     }
+
+    public List<Stats> getStatsFromDeckId(int deckId){
+        Session session = sessionFactory.openSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Stats> query = builder.createQuery( Stats.class );
+        Root<Stats> root = query.from( Stats.class );
+        query.select(root).where(builder.equal(root.get("deck_id"), deckId));
+        List<Stats> stats = session.createQuery( query ).getResultList();
+
+        session.close();
+        return stats;
+    }
+
+    public double caluculateWinPercentage(Stats stats){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        double wins = stats.getWins();
+        logger.info(wins);
+        double losses = stats.getLosses();
+        logger.info(losses);
+        double totalGames = wins + losses;
+        logger.info(totalGames);
+        double winPercentage = (wins / totalGames);
+        logger.info(winPercentage);
+
+
+        stats.setWinPercentage(winPercentage);
+
+        session.update(stats);
+        transaction.commit();
+        session.close();
+        return(winPercentage);
+    }
 }

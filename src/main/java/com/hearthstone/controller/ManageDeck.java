@@ -3,7 +3,9 @@ package com.hearthstone.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hearthstone.entity.Decklist;
+import com.hearthstone.entity.Stats;
 import com.hearthstone.persistence.DecklistDao;
+import com.hearthstone.persistence.StatsDao;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -38,6 +40,7 @@ public class ManageDeck extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DecklistDao dao = new DecklistDao();
+        StatsDao statsDao = new StatsDao();
         String jsonAsString = "";
         ArrayList cardNames = new ArrayList();
         ArrayList cardImages = new ArrayList();
@@ -48,6 +51,8 @@ public class ManageDeck extends HttpServlet {
         int deckId = Integer.parseInt(searchTerm);
         logger.info(deckId);
 
+        List<Stats> stats = statsDao.getStatsFromDeckId(deckId);
+        logger.info(stats);
         List<Decklist> deck = dao.getDeckById(deckId);
         logger.info(deck);
 
@@ -64,6 +69,7 @@ public class ManageDeck extends HttpServlet {
 
         request.setAttribute("decks", deck);
         request.setAttribute("cards", cardImages);
+        request.setAttribute("stats", stats);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/deckDisplay.jsp");
         dispatcher.forward(request, response);
 

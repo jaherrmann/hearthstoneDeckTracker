@@ -22,12 +22,11 @@ class StatsDaoTest {
         dao = new StatsDao();
     }
 
-
     @Test
     void shouldGetStatsById(){
         StatsDao stats = new StatsDao();
         Stats retrievedStats = stats.getStatsFromId(1);
-        assertEquals(retrievedStats.getLosses(), 2);
+        assertEquals(retrievedStats.getLosses(), 0);
     }
 
     @Test
@@ -40,7 +39,7 @@ class StatsDaoTest {
         List<Stats> retrievedStats = statsDao.getStatsByDeckId(decklist);
         logger.info(retrievedStats);
 
-        assertEquals(65, retrievedStats.get(0).getWinPercentage());
+        assertEquals(0, retrievedStats.get(0).getWinPercentage());
     }
 
     @Test
@@ -53,7 +52,7 @@ class StatsDaoTest {
 
         Stats retrievedStats = (Stats) dao.getByID(1);
 
-        assertEquals(2, retrievedStats.getWins());
+        assertEquals(1, retrievedStats.getWins());
     }
 
     @Test
@@ -66,6 +65,37 @@ class StatsDaoTest {
 
         Stats retrievedStats = (Stats) dao.getByID(1);
 
-        assertEquals(3, retrievedStats.getLosses());
+        assertEquals(1, retrievedStats.getLosses());
+    }
+
+    @Test
+    void shouldRetrieveStatsByDeckId(){
+        StatsDao statsDao = new StatsDao();
+        GenericDao dao = new GenericDao(Decklist.class);
+        Decklist decklist = (Decklist) dao.getByID(1);
+        int deckId = decklist.getId();
+
+        List<Stats> retrievedStats = statsDao.getStatsFromDeckId(deckId);
+
+        assertEquals(retrievedStats.get(0).getId(), 1);
+
+    }
+
+    @Test
+    void shouldReturnWinPercentage(){
+        StatsDao statsDao = new StatsDao();
+        GenericDao dao = new GenericDao(Stats.class);
+        Stats stats = (Stats) dao.getByID(1);
+
+        statsDao.addWin(stats);
+        statsDao.addWin(stats);
+        statsDao.addWin(stats);
+        statsDao.addLoss(stats);
+
+        statsDao.caluculateWinPercentage(stats);
+        Stats retrievedStats = (Stats) dao.getByID(1);
+        logger.info(retrievedStats.getWins());
+
+        assertEquals(.75, retrievedStats.getWinPercentage());
     }
 }

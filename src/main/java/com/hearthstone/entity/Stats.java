@@ -24,7 +24,7 @@ public class Stats {
     private int losses;
 
     @Column(name = "win_percentage")
-    private int winPercentage;
+    private double winPercentage;
 
     @Column(name = "deck_id")
     private int deck_id;
@@ -73,11 +73,11 @@ public class Stats {
         this.losses = losses;
     }
 
-    public int getWinPercentage() {
+    public double getWinPercentage() {
         return winPercentage;
     }
 
-    public void setWinPercentage(int winPercentage) {
+    public void setWinPercentage(double winPercentage) {
         this.winPercentage = winPercentage;
     }
 
