@@ -20,7 +20,7 @@
         <h3 class="w3-wide"><b>Hearthstone Deck Tracker</b></h3>
     </div>
     <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-        <a href="login.jsp" class="w3-bar-item w3-button">Admin</a>
+        <a href="adminHome.jsp" class="w3-bar-item w3-button">Admin</a>
         <a href="signIn.jsp" class="w3-bar-item w3-button">Sign In</a>
         <a href="add.jsp" class="w3-bar-item w3-button">Add Deck</a>
         <a href="viewDecks" class="w3-bar-item w3-button">Manage Decks</a>

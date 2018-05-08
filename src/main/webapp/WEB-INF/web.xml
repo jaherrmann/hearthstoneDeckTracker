@@ -8,24 +8,23 @@
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
-      <form-login-page>/login.jsp</form-login-page>
+      <form-login-page>/admin.jsp</form-login-page>
       <form-error-page>/loginError.jsp</form-error-page>
     </form-login-config>
   </login-config>
 
-  <!-- Protect index.jsp. -->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>add</web-resource-name>-->
-      <!--<url-pattern>/add.jsp</url-pattern>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>administrator</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>adminHome</web-resource-name>
+      <url-pattern>/adminHome.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>administrator</role-name>
+    </auth-constraint>
+  </security-constraint>
 
-  <!--<security-role>-->
-    <!--<role-name>administrator</role-name>-->
-  <!--</security-role>-->
+  <security-role>
+    <role-name>administrator</role-name>
+  </security-role>
 
 </web-app>
