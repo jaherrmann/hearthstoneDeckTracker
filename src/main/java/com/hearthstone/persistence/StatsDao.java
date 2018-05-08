@@ -44,10 +44,11 @@ public class StatsDao {
         return stats;
     }
 
-    public int addWin(Stats stats){
+    public int addWin(Stats stats, int winNumbers){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        int wins = stats.getWins() + 1;
+
+        int wins = stats.getWins() + winNumbers;
         logger.info(wins);
 
         stats.setWins((wins));
@@ -58,10 +59,11 @@ public class StatsDao {
         return(wins);
     }
 
-    public int addLoss(Stats stats){
+    public int addLoss(Stats stats, int lossNumbers){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        int losses = stats.getLosses() + 1;
+
+        int losses = stats.getLosses() + lossNumbers;
         logger.info(losses);
 
         stats.setLosses((losses));

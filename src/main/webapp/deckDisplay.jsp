@@ -1,18 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: student
-  Date: 4/29/18
-  Time: 12:42 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Decks</title>
+    <c:import url="jsp/head.jsp" />
+    <c:import url="jsp/style.jsp" />
 </head>
 <body>
 
+<c:import url="jsp/sidebar.jsp" />
+
+<div class="w3-main" style="margin-left:300px">
+
+<div style="margin-left:200px">
 <c:forEach items="${decks}" var="deck">
     <h2>Deck Name: </h2>
     <h2>${deck.name}</h2>
@@ -39,8 +40,7 @@
     <input type="submit" value="Record Stats!">
 </form>
 
-<br />
-<br />
+</div>
 <c:forEach items="${cards}" var="card">
 
     <tr>
@@ -49,5 +49,6 @@
 </c:forEach>
 <br />
 <a href="index.jsp">Return Home</a>
+</div>
 </body>
 </html>

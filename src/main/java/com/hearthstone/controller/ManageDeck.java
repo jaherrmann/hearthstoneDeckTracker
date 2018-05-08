@@ -44,12 +44,21 @@ public class ManageDeck extends HttpServlet {
         DecklistDao dao = new DecklistDao();
         StatsDao statsDao = new StatsDao();
         String jsonAsString = "";
+        String searchTerm = "";
+        int search = 0;
         ArrayList cardNames = new ArrayList();
         ArrayList cardImages = new ArrayList();
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
-        String searchTerm = request.getParameter("deckId");
+        searchTerm = request.getParameter("deckId");
+
+        //if this servlet was called by calculate stats get Deck Id from session, not jsp
+        if(searchTerm == null || searchTerm.isEmpty() ){
+            search = (Integer) session.getAttribute("deckId");
+            searchTerm = Integer.toString(search);
+        }
+
         int deckId = Integer.parseInt(searchTerm);
 
         //this is important

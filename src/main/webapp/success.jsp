@@ -1,20 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: student
-  Date: 4/29/18
-  Time: 11:21 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
+    <c:import url="jsp/head.jsp" />
+    <c:import url="jsp/style.jsp" />
     <title>Success!</title>
+</head>
+<body>
+<c:import url="jsp/sidebar.jsp" />
+<div class="centered">
     <h1>Successful!</h1>
     <a href="index.jsp">Return home</a><br />
     <a href="add.jsp">Add Deck</a><br />
     <a href="viewDecks">View Your Decks</a>
-</head>
-<body>
+</div>
 
 </body>
 </html>

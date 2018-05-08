@@ -48,11 +48,11 @@ class StatsDaoTest {
         GenericDao dao = new GenericDao(Stats.class);
         Stats stats = (Stats) dao.getByID(1);
 
-        statsDao.addWin(stats);
+        statsDao.addWin(stats, 12);
 
         Stats retrievedStats = (Stats) dao.getByID(1);
 
-        assertEquals(1, retrievedStats.getWins());
+        assertEquals(12, retrievedStats.getWins());
     }
 
     @Test
@@ -61,11 +61,11 @@ class StatsDaoTest {
         GenericDao dao = new GenericDao(Stats.class);
         Stats stats = (Stats) dao.getByID(1);
 
-        statsDao.addLoss(stats);
+        statsDao.addLoss(stats, 3);
 
         Stats retrievedStats = (Stats) dao.getByID(1);
 
-        assertEquals(1, retrievedStats.getLosses());
+        assertEquals(3, retrievedStats.getLosses());
     }
 
     @Test
@@ -87,10 +87,8 @@ class StatsDaoTest {
         GenericDao dao = new GenericDao(Stats.class);
         Stats stats = (Stats) dao.getByID(1);
 
-        statsDao.addWin(stats);
-        statsDao.addWin(stats);
-        statsDao.addWin(stats);
-        statsDao.addLoss(stats);
+        stats.setWins(3);
+        stats.setLosses(1);
 
         statsDao.caluculateWinPercentage(stats);
         Stats retrievedStats = (Stats) dao.getByID(1);

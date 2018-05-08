@@ -1,20 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: student
-  Date: 4/29/18
-  Time: 11:23 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <c:import url="jsp/head.jsp" />
+    <c:import url="jsp/style.jsp" />
     <title>Failure</title>
-    <h1>Failed to Add Deck</h1>
-    <a href="index.jsp">Return home</a>
-    <a href="add.jsp">Try Again</a>
-    <%--<a href="viewDecks.jsp">View Your Decks</a>--%>
 </head>
 <body>
-
+    <c:import url="jsp/sidebar.jsp" />
+    <div class="topHeavy">
+        <h1>Something Went Terribly Wrong</h1>
+        <h2>But don't worry, LOTR is still > Star Wars</h2>
+        <a href="index.jsp">Return home</a>
+    </div>
 </body>
 </html>

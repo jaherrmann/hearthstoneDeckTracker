@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet(
         urlPatterns = {"/calculateStats"}
@@ -26,47 +27,53 @@ public class CalculateStats extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        StatsDao dao = new StatsDao();
-        List<Stats> stats;
+        StatsDao statsDao = new StatsDao();
+        GenericDao dao = new GenericDao(Stats.class);
+        Stats stats;
+        int calculateWins = 0;
+        int calculateLosses = 0;
 
         String wins = request.getParameter("wins");
         String losses = request.getParameter("losses");
         int deckId =  (Integer) session.getAttribute("deckId");
 
-        int calculateWins = Integer.parseInt(wins);
-        int calculateLosses = Integer.parseInt(losses);
+        //do a little null exception handling
+        if(!(Objects.equals(wins, ""))){
+            calculateWins = Integer.parseInt(wins);
+        } else{
+            calculateWins = 0;
+        }
 
-        stats = dao.getStatsFromDeckId(deckId);
+        if(!(Objects.equals(losses, ""))) {
+            calculateLosses = Integer.parseInt(losses);
+        } else {
+            calculateLosses = 0;
+        }
+
+        logger.info("Wins: " + wins);
+        logger.info("Losses: " + losses);
+
+        //get the stat object to be calculated by deckId
+        stats = (Stats) dao.getByID(deckId);
 
         logger.info(stats);
-
-        dao.getStatsFromDeckId(deckId);
-
         logger.info(deckId);
 
-//        if(calculateWins != 0){
-//            dao.addWin(calculateWins);
-//        }
-//
-//
-//
-//
-//
-//
-//        try {
-//            dao.(user);
-//
-//            userId = user.getId();
-//            Integer.toString(userId);
-//            logger.info(userId);
-//
-//            session.setAttribute("userName", userId);
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/success.jsp");
-//            dispatcher.forward(request, response);
-//        } catch (Exception ex){
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/failure.jsp");
-//            dispatcher.forward(request, response);
-//        }
+        try {
+            //set the stat values of the stat object
+            statsDao.addWin(stats, calculateWins);
+            statsDao.addLoss(stats, calculateLosses);
+            statsDao.caluculateWinPercentage(stats);
+
+            session.setAttribute("stats", stats);
+            logger.info(stats);
+
+            response.sendRedirect(request.getContextPath() + "/manageDeck");
+
+        } catch (Exception ex){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/failure.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
 }

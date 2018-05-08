@@ -1,20 +1,20 @@
-<%--
-<%@include file="head.jsp"%>
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="startbootstrap-sb-admin/css/sb-admin.css" />
+    <c:import url="jsp/head.jsp" />
+    <c:import url="jsp/style.jsp" />
     <title>Hearthstone Deck Tracker</title>
 </head>
 <body>
+<c:import url="jsp/sidebar.jsp" />
+<c:import url="jsp/main-body.jsp" />
 
-<h2>Welcome to Hearthstone Deck Tracker</h2>
-<a href="login.jsp">Admin</a><br />
-<a href="signIn.jsp">Sign In</a><br />
-<a href="add.jsp">Add Deck</a><br />
-<a href="viewDecks">Manage Decks</a><br />
-<a href="createProfile.jsp">Create Hearthstone Deck Tracker Profile</a>
+    <div class="centered">
+        <p><b>Welcome To Hearthstone Deck Tracker</b></p>
+    </div>
+
 
 </body>
+
 </html>
 
