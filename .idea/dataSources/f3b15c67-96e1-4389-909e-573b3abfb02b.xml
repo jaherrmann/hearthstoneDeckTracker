@@ -168,7 +168,6 @@
       <RefSchemaName>hearthstone</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <trigger id="51" parent="11" name="stats_after_insert">
       <Turn>after-row</Turn>

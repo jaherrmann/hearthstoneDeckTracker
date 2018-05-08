@@ -34,11 +34,15 @@
 </c:forEach>
 </table>
 
-<form action ="/IndieProjectHerrmann/calculateStats">
-    <input type="number" value="Enter Wins" name="wins" placeholder="Add Wins"><br />
-    <input type="number" value="Enter Losses" name="losses" placeholder="Add Losses"><br />
-    <input type="submit" value="Record Stats!">
-</form>
+    <form action ="/IndieProjectHerrmann/calculateStats">
+        <input type="number" value="Enter Wins" name="wins" placeholder="Add Wins"><br />
+        <input type="number" value="Enter Losses" name="losses" placeholder="Add Losses"><br />
+        <input type="submit" value="Record Stats!">
+    </form>
+
+    <form action="areYouSure.jsp">
+        <input type="submit" value="Delete Deck">
+    </form>
 
 </div>
 <c:forEach items="${cards}" var="card">

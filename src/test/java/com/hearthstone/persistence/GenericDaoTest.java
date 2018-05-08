@@ -149,17 +149,18 @@ class GenericDaoTest {
         assertNull(deckDao.getByID(3));
     }
 
-//    @Test
-//    void shouldFailWithTooFewCharacters(){
-//        GenericDao userDao = new GenericDao(User.class);
-//        User user = new User("Giannis", "GOAT");
-//
-//        Set<ConstraintViolation<User>> constraintViolations =
-//                validator.validate( user );
-//
-//        assertEquals(1, constraintViolations.size());
-//        assertEquals("size must be between 6 and 13", constraintViolations.iterator().next().getMessage());
-//    }
+    @Test
+    void shouldDeleteDeckAndNotUser(){
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao deckDao = new GenericDao(Decklist.class);
+
+        Decklist deck = (Decklist) deckDao.getByID(1);
+        deckDao.delete(deck);
+
+        User user = (User) userDao.getByID(1);
+
+        assertEquals(1, user.getId());
+    }
 
     @Test
     void shouldAddNewUser(){

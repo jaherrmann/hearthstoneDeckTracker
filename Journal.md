@@ -92,6 +92,14 @@ Tasks Completed
 * Add deck works.
 
 ### Week 16
+* My front end has come together. I'm reasonably, if not thrilled with the outcome. It looks fine. Not great. But decent. 
+* Users can now delete a deck. 
+* Up on AWS
+* Need to add Admin validation
+* Need to add ability to update deck
+* Need to add input validation
+* Need to add jdoc
+* Need to record video
 
 
 

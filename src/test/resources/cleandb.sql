@@ -1,7 +1,7 @@
 drop trigger stats_after_insert;
 delete from stats;
-delete from user;
 delete from decklist;
+delete from user;
 alter table stats AUTO_INCREMENT = 1;
 alter table decklist AUTO_INCREMENT = 1;
 alter table user AUTO_INCREMENT = 1;

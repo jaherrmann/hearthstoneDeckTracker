@@ -13,4 +13,7 @@
 |4/22/ 18| Got database up and running completely how I want it with hibernate correctly inserting | 5| ||
 |4/23/18| Got a servlet up and can display information to the page| 2| |
 |4/29/ 18 | Display working. Can consume the API I want. Tests running and I need  to focus on a template and full CRUD | 6 | ||
+|5/5/ 18|Huge progress. Serlvets working great. Users are active. | 6|
+|5/6/ 18|Up on AWS and coming together. Had to work on the logic of the SQL table. |6||
+|5/7/18| Made a big leap. UI is done. User can delete a deck. I only need to add validation and admin priviledges, oh and all the jdoc| 9|||
 
