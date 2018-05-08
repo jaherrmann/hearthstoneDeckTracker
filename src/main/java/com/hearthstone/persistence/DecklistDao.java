@@ -13,12 +13,15 @@ import java.util.List;
 
 /**
  * Class designed to insert into decklist
+ * @author jeff
  */
 public class DecklistDao {
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
-     * Get card by card number
+     * This will get the cardName
+     * @param cardName name
+     * @return decklist the decklist object
      */
     public Decklist getCardByNumber(String cardName){
         Session session = sessionFactory.openSession();
@@ -28,7 +31,9 @@ public class DecklistDao {
     }
 
     /**
-     * Get deck name from Id
+     * This will get the name from id
+     * @param id id
+     * @return decklist object
      */
     public Decklist getNameFromId(int id){
         Session session = sessionFactory.openSession();
@@ -37,7 +42,11 @@ public class DecklistDao {
         return decklist;
     }
 
-
+    /**
+     * This will get a list of decks by Id
+     * @param id the id
+     * @return decklist a list of decklist objects
+     */
     public List<Decklist> getDeckById(int id) {
         Session session = sessionFactory.openSession();
 

@@ -23,10 +23,18 @@ import java.util.List;
 /**
  * This class will allow the user to view all of their decks, it will also consume a web api that will
  * retrieve stats and charateristics of specific cards.
+ * @author jeff
  */
 public class ViewDecks extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
 
+    /**
+     * This will make the request to the decklist table and return a collection of all decks a user has
+     * @param request request
+     * @param response response
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserDao user = new UserDao();

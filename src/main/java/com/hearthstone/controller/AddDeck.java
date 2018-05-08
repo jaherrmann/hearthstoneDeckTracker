@@ -26,7 +26,14 @@ import java.io.IOException;
  */
 public class AddDeck extends HttpServlet{
     Logger logger = Logger.getLogger(this.getClass());
-
+    /**
+     * This will read the user ID and insert a deck into the DB. It will redirect to failure if
+     * something goes wrong
+     * @param request the request
+     * @param response the response
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int userId = (Integer) session.getAttribute("userName");

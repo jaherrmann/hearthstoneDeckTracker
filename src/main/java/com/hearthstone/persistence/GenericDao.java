@@ -11,22 +11,44 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+/**
+ * This is the generic dao for this project. It will generically insert values
+ * @author jeff
+ * @param <T>
+ */
 public class GenericDao<T> {
     private Class<T> type;
     Logger logger =  Logger.getLogger(this.getClass());
 
+    /**
+     * No-argument constructor
+     */
     public GenericDao() {
 
     }
 
+    /**
+     * This will instantiate the type that the generic dao takes
+     * @param type type
+     */
     public GenericDao(Class<T> type) {
         this.type = type;
     }
 
+    /**
+     * Get the session
+     * @return session the session
+     */
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
 
+    /**
+     * This will get an object by id
+     * @param id id
+     * @param <T> the type
+     * @return entity
+     */
     public <T>T getByID(int id) {
         Session session = getSession();
         T entity = (T)session.get( type, id );
@@ -34,6 +56,10 @@ public class GenericDao<T> {
         return entity;
     }
 
+    /**
+     * This will delete an entity
+     * @param entity the entity
+     */
     public void delete( T entity) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
@@ -42,6 +68,10 @@ public class GenericDao<T> {
         session.close();
     }
 
+    /**
+     * This will get all entities
+     * @return entity
+     */
     public List<T> getAll() {
         Session session = getSession();
 
@@ -56,6 +86,11 @@ public class GenericDao<T> {
         return entity;
     }
 
+    /**
+     * This will add an entity
+     * @param entity entity
+     * @return id the id
+     */
     public int add(T entity) {
         int id = 0;
         Session session = getSession();
@@ -66,6 +101,10 @@ public class GenericDao<T> {
         return id;
     }
 
+    /**
+     * This will update an entity
+     * @param entity entity
+     */
     public void update(T entity) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
@@ -73,60 +112,4 @@ public class GenericDao<T> {
         transaction.commit();
         session.close();
     }
-
-    public List<T> getByPropertyEqual(String propertyName, String value) {
-        Session session = getSession();
-
-        logger.debug("Searching for " + type + " with " + propertyName + " = " + value);
-
-        int searchId = Integer.parseInt(value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery( type );
-        Root<T> root = query.from( type );
-        query.select(root).where(builder.equal(root.get(propertyName), searchId));
-        List<T> entities = session.createQuery( query ).getResultList();
-
-        session.close();
-        return entities;
-    }
-
-
-    public List<T> getByPropertyString(String propertyName, String value) {
-        Session session = getSession();
-
-        logger.debug("Searching for " + type + " with " + propertyName + " = " + value);
-
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery( type );
-        Root<T> root = query.from( type );
-        query.select(root).where(builder.equal(root.get("user_name"), propertyName));
-        List<T> entities = session.createQuery( query ).getResultList();
-
-        session.close();
-        return entities;
-    }
-
-    /**
-     * Get user by property (like)
-     * sample usage: getByPropertyLike("lastname", "C")
-     */
-    public List<T> getByPropertyLike(String propertyName, String value) {
-        Session session = getSession();
-
-        logger.debug("Searching for type with {} = {}, " + propertyName + ", " + value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery( type );
-        Root<T> root = query.from( type );
-        Expression<String> propertyPath = root.get(propertyName);
-
-        query.where(builder.like(propertyPath, "%" + value + "%"));
-
-        List<T> entities = session.createQuery( query ).getResultList();
-        session.close();
-        return entities;
-    }
-
 }

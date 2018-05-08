@@ -12,7 +12,8 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
- * Class designed to insert into decklist
+ * Class made to manipulate the user table
+ * @author jeff
  */
 public class UserDao {
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
@@ -20,7 +21,7 @@ public class UserDao {
 
     /**
      *
-     * @param userId
+     * @param userId userid
      * @return the deck sorted by userId
      */
     public User getUserFromId(int userId){
@@ -30,7 +31,11 @@ public class UserDao {
         return user;
     }
 
-
+    /**
+     * This will get the deck by userId
+     * @param user userId
+     * @return decklist the collection of decks a user has
+     */
     public List<Decklist> getDeckByUserId(User user) {
         Session session = sessionFactory.openSession();
         int userId = user.getId();
@@ -46,6 +51,12 @@ public class UserDao {
         return decks;
     }
 
+    /**
+     * Retrieve a user by username and password
+     * @param username username
+     * @param password password
+     * @return entities the retireved object
+     */
     public List<User> getUserbyUsernamePassword(String username, String password) {
         Session session = sessionFactory.openSession();
 

@@ -36,9 +36,18 @@ import java.util.List;
 /**
  * This class will allow the user to view all of their decks, it will also consume a web api that will
  * retrieve stats and charateristics of specific cards.
+ * @author jeff
  */
 public class ManageDeck extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
+
+    /**
+     * This will make the rest call and call appropriate method to output the deck to the page
+     * @param request request
+     * @param response request
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         DecklistDao dao = new DecklistDao();
@@ -65,16 +74,20 @@ public class ManageDeck extends HttpServlet {
         session.setAttribute("deckId", deckId);
         logger.info(deckId);
 
+        //get the list of stats for jsp
         List<Stats> stats = statsDao.getStatsFromDeckId(deckId);
         logger.info(stats);
+        //get the deck
         List<Decklist> deck = dao.getDeckById(deckId);
         logger.info(deck);
 
+        //stringify the json array returned
         String jsonArrayOfCards = ow.writeValueAsString(deck);
 
         logger.info(jsonArrayOfCards);
         logger.info(jsonAsString);
 
+        //parse out the json object
         parseJsonObject(jsonArrayOfCards, cardNames);
 
         logger.info(cardNames);
@@ -89,6 +102,11 @@ public class ManageDeck extends HttpServlet {
 
     }
 
+    /**
+     * This will get the URL of the card images from the array list
+     * @param cardNames cardNames
+     * @param cardImages cardImages
+     */
     private void getCardImagesFromCardNameList(ArrayList cardNames, ArrayList cardImages) {
         JSONObject cardJson;
         String cardImage = "";
@@ -115,6 +133,11 @@ public class ManageDeck extends HttpServlet {
         }
     }
 
+    /**
+     * This will parse the json object the rest call receives
+     * @param cardJson cardJson
+     * @return foundImg the found image
+     */
     private String parseRestCall(JSONObject cardJson) {
         String foundImg = "";
         JSONArray cardArray = cardJson.getJSONArray("array");
@@ -128,6 +151,11 @@ public class ManageDeck extends HttpServlet {
         return foundImg;
     }
 
+    /**
+     * This will parse the Json object and add the card name into an array List
+     * @param jsonArrayOfCards the array of cards
+     * @param cardNames the collection of card names
+     */
     private void parseJsonObject(String jsonArrayOfCards, ArrayList cardNames){
         String foundCard = "";
         JSONArray cardArray = new JSONArray(jsonArrayOfCards);

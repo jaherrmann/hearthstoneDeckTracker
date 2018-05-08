@@ -19,11 +19,9 @@ import java.util.Set;
 public class User {
 
     @Column(name="user_name")
-//    @Size(min = 6, max = 13)
     private String user_name;
 
     @Column(name="user_password")
-//    @Size(min = 6, max = 13)
     private String user_password;
 
     @Id
@@ -42,16 +40,28 @@ public class User {
 
     }
 
+    /**
+     * Instantiates a user
+     * @param user_name username
+     * @param user_password userPassword
+     */
     public User(String user_name, String user_password){
-//        this.id = id;
         this.user_name = user_name;
         this.user_password = user_password;
     }
 
+    /**
+     * This will get the decklist from a user
+     * @return decklist the decklist
+     */
     public Set<Decklist> getDecklist() {
         return decklist;
     }
 
+    /**
+     * This will set a user's decklist
+     * @param decklist decklist
+     */
     public void setDecklist(Set<Decklist> decklist){
         this.decklist = decklist;
     }

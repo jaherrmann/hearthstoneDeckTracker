@@ -20,9 +20,20 @@ import java.util.List;
 @WebServlet(
         urlPatterns = {"/signIn"}
 )
-
+/**
+ * This class will allows a user to sign into their profile
+ * @author jeff
+ */
 public class SignIn extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
+
+    /**
+     * This will make a call to the user table and return a user based on creds
+     * @param request request
+     * @param response response
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserDao userDao = new UserDao();

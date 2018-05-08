@@ -19,12 +19,26 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * States the servlet
+ */
 @WebServlet(
         urlPatterns = {"/calculateStats"}
 )
-
+/**
+ * This class will calculate the wins and losses taken from the front-end
+ * @author jeff
+ */
 public class CalculateStats extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
+
+    /**
+     * This will add the stats to the db
+     * @param request request
+     * @param response response
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         StatsDao statsDao = new StatsDao();

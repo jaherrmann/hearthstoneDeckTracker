@@ -19,9 +19,20 @@ import java.io.IOException;
 @WebServlet(
         urlPatterns = {"/delete"}
 )
+/**
+ * This class will delete a deck from the db
+ * @author jeff
+ */
 public class DeleteDeck extends HttpServlet {
     Logger logger = Logger.getLogger(this.getClass());
 
+    /**
+     * This will delete a deck
+     * @param request request
+     * @param response request
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         GenericDao dao = new GenericDao(Decklist.class);

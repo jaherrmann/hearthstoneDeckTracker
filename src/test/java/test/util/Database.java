@@ -28,12 +28,18 @@ public class Database {
 
     private Connection connection;
 
+    /**
+     * private constructor
+     */
     // private constructor prevents instantiating this class anywhere else
     private Database() {
         loadProperties();
 
     }
 
+    /**
+     * Load the db properties --IMPORTANT
+     */
     private void loadProperties() {
         properties = new Properties();
         try {
@@ -48,15 +54,27 @@ public class Database {
 
     }
 
+    /**
+     * gets the db instance
+     * @return instance
+     */
     // get the only Database object available
     public static Database getInstance() {
         return instance;
     }
 
+    /**
+     * gets the connection
+     * @return connection
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     * Throw error if fail
+     * @throws Exception exception
+     */
     public void connect() throws Exception {
         if (connection != null)
             return;
@@ -71,6 +89,9 @@ public class Database {
         connection = DriverManager.getConnection(url, properties.getProperty("username"),  properties.getProperty("password"));
     }
 
+    /**
+     * Disconnect session
+     */
     public void disconnect() {
         if (connection != null) {
             try {
